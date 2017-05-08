@@ -4,7 +4,11 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { ExampleCollection, publicationNames, pkgJson } from 'meteor/justinr1234:example';
-import { subscriptionHandlers, subscriptionHandlersHelpers, Router, logFactory } from 'meteor/justinr1234:lib';
+import { subscriptionHandlers,
+  subscriptionHandlersHelpers,
+  logFactory,
+  Router,
+  autoformHandlers } from 'meteor/justinr1234:lib';
 
 const debug = logFactory(pkgJson.name, __filename);
 
@@ -14,16 +18,21 @@ const onCreated = function onCreated() {
   const dataLoadingErrors = instance.dataLoadingErrors = new ReactiveDict();
   const composedHandlers = subscriptionHandlers({ dataLoading, dataLoadingErrors, debug });
 
+  const formSuccess = instance.formSuccess = new ReactiveVar(false);
+  const autoformError = instance.autoformError = new ReactiveDict(false);
+  const autoFormHooks = autoformHandlers({ formSuccess, autoformError, debug });
+  AutoForm.hooks({
+    EXAMPLE_EDIT_FORM: autoFormHooks,
+  });
+
   instance.subscribe(publicationNames.EXAMPLE_PUBLICATION, composedHandlers);
-};
 
-const hooks = {
-  EXAMPLE_EDIT_FORM: {
-    onSuccess: () => FlowRouter.go(Router.routeMap.EXAMPLE_LIST.path),
-  },
+  instance.autorun(() => {
+    if (formSuccess.get()) {
+      FlowRouter.go(Router.routeMap.EXAMPLE_LIST.path);
+    }
+  });
 };
-
-AutoForm.hooks(hooks);
 
 const helpers = {
   getDoc: () => ExampleCollection.findOne(FlowRouter.getParam('_id')),
@@ -34,4 +43,3 @@ export const composedHelpers = { ...helpers, ...subscriptionHandlersHelpers() };
 
 Template.EXAMPLE_EDIT.onCreated(onCreated);
 Template.EXAMPLE_EDIT.helpers(composedHelpers);
-
