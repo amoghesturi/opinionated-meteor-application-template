@@ -29,9 +29,6 @@ Package.onUse(api => {
   api.use('alanning:roles');
   api.use('aldeed:simple-schema');
 
-  // SERVER LIB
-  api.use('ongoworks:security@2.1.0');
-
   // MAIN MODULES
   api.mainModule('client/main.js', 'client');
   api.mainModule('server/main.js', 'server');

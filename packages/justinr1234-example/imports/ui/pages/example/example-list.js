@@ -56,6 +56,8 @@ const events = {
         handleError({ error });
       }
 
+      debug(`Successfully removed ${_id}`);
+
       instance.removing.set(_id, false);
       instance.confirmRemove.set(_id, false);
     });
