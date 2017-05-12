@@ -3,7 +3,7 @@ import { _ } from 'meteor/underscore';
 import { Random } from 'meteor/random';
 import { pkgJson, logFactory } from 'meteor/justinr1234:lib';
 
-const handleErrorDefaultDebug = logFactory(pkgJson, __filename);
+const handleErrorDefaultDebug = logFactory(pkgJson.name, __filename);
 
 const validSeverities = ['info', 'success', 'warning', 'error'];
 

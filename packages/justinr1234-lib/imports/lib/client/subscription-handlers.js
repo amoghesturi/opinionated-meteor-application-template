@@ -1,8 +1,7 @@
 import { Template } from 'meteor/templating';
-import { pkgJson, handleError, mapDataLoadingErrors } from 'meteor/justinr1234:lib';
-import { default as logFactory } from 'debug';
+import { pkgJson, handleError, mapDataLoadingErrors, logFactory } from 'meteor/justinr1234:lib';
 
-const subscriptionHandlersDebug = logFactory(`@${pkgJson.name}${__filename}`);
+const subscriptionHandlersDebug = logFactory(pkgJson.name, __filename);
 
 export const defaultOnReady = function defaultOnReady(dataLoading) {
   dataLoading.set(false);
