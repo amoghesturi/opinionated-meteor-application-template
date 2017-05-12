@@ -1,7 +1,6 @@
-import pkgJson from '../imports/version.js';
+import pkgJson from '../package.json';
 import { logFactory } from '../imports/lib/debug.js';
 import { Security } from './security.js';
-import { Publications } from '../imports/lib/both/publications.js';
 import {
   APP_BODY,
   APP_NOT_FOUND,
@@ -19,14 +18,11 @@ import {
   mergeRoutesByGroup,
 } from '../imports/lib/both/routes/util.js';
 import { Router } from '../imports/lib/both/routes/router.js';
-import '../imports/startup/both';
-import { DEBUG_ENABLED } from '../imports/startup/both/debug.js';
 
 export {
   pkgJson,
   logFactory,
   Security,
-  Publications,
   APP_BODY,
   APP_NOT_FOUND,
   mergeTemplates,
@@ -42,5 +38,4 @@ export {
   mergeRouteMap,
   mergeRouteGroups,
   mergeRoutesByGroup,
-  DEBUG_ENABLED,
 };

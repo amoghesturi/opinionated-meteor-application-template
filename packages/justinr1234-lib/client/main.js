@@ -1,9 +1,8 @@
-import pkgJson from '../imports/version';
+import pkgJson from '../package.json';
 import 'izitoast/dist/css/iziToast.min.css';
 import { logFactory } from '../imports/lib/debug.js';
 import { handleError, mapDataLoadingErrors } from '../imports/lib/client/handle-error.js';
 import { subscriptionHandlers, subscriptionHandlersHelpers } from '../imports/lib/client/subscription-handlers.js';
-import { Publications } from '../imports/lib/both/publications.js';
 import {
   APP_BODY,
   APP_NOT_FOUND,
@@ -22,13 +21,6 @@ import {
 } from '../imports/lib/both/routes/util.js';
 import { Router } from '../imports/lib/both/routes/router.js';
 import '../imports/ui/templates';
-import {
-  defaultAutoformHookBefore,
-  defaultAutoformHookOnError,
-  generateDefaultAutoformHooks,
-} from '../imports/lib/client/autoform/index.js';
-import '../imports/startup/both';
-import { DEBUG_ENABLED } from '../imports/startup/both/debug.js';
 
 export {
   pkgJson,
@@ -37,7 +29,6 @@ export {
   mapDataLoadingErrors,
   subscriptionHandlers,
   subscriptionHandlersHelpers,
-  Publications,
   APP_BODY,
   APP_NOT_FOUND,
   mergeTemplates,
@@ -53,8 +44,4 @@ export {
   mergeRouteMap,
   mergeRouteGroups,
   mergeRoutesByGroup,
-  defaultAutoformHookBefore,
-  defaultAutoformHookOnError,
-  generateDefaultAutoformHooks,
-  DEBUG_ENABLED,
 };
