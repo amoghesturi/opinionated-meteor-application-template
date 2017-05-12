@@ -1,7 +1,7 @@
 /* globals Package, Npm */
 Package.describe({
   name: 'justinr1234:example',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'justinr1234 Example',
   documentation: 'README.md',
   git: 'https://github.com/justinr1234/opinionated-meteor-application-template.git',
@@ -28,9 +28,6 @@ Package.onUse(api => {
   api.use('justinr1234:lib');
   api.use('alanning:roles');
   api.use('aldeed:simple-schema');
-
-  // SERVER LIB
-  api.use('ongoworks:security@2.1.0');
 
   // MAIN MODULES
   api.mainModule('client/main.js', 'client');

@@ -26,6 +26,9 @@ export class JustinRouter {
   get routesByGroup() {
     return this._routesByGroup.get();
   }
+  get flowRouterRoutes() {
+    return this._flowRouterRoutes.get();
+  }
   addRoutes(routes = {}, insertAtFront = false) {
     if (Object.keys(routes).length === 0) {
       debug('skipping addRoutes: empty routes param');
@@ -56,13 +59,17 @@ export class JustinRouter {
     this._routes.set(_routes);
 
     // TODO: Merge routes and save?
-    createFlowRouterRoutes(routesByGroup);
+    const existingRoutes = this._flowRouterRoutes.get();
+    this._flowRouterRoutes.set(insertAtFront
+      ? [...createFlowRouterRoutes(routesByGroup), ...existingRoutes]
+      : [...existingRoutes, ...createFlowRouterRoutes(routesByGroup)]);
   }
   constructor(_routes = {}) {
     this._routeMap = new ReactiveVar({});
     this._routeGroups = new ReactiveVar([]);
     this._routesByGroup = new ReactiveVar({});
     this._routes = new ReactiveVar(_routes);
+    this._flowRouterRoutes = new ReactiveVar([]);
     const {
       routeMap = {},
       routeGroups = [],

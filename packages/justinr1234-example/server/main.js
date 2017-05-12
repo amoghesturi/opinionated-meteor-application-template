@@ -1,9 +1,8 @@
-import pkgJson from '../package.json';
+import pkgJson from '../imports/version.js';
 import { publicationNames } from '../imports/publication-names.js';
-import { routeMap, routeGroups, routesByGroup } from '../imports/routes.js';
+import '../imports/routes.js';
 import '../imports/api/collections';
 import { ExampleCollection, ExampleSchema } from '../imports/api/collections/example/example.js';
-import '../imports/api/methods';
 import './publications';
 
 export {
@@ -11,8 +10,5 @@ export {
   ExampleCollection,
   ExampleSchema,
   publicationNames,
-  routeMap,
-  routeGroups,
-  routesByGroup,
 };
 
