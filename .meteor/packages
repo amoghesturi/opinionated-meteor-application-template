@@ -55,6 +55,6 @@ dispatch:mocha
 random@1.0.10
 ongoworks:security
 alanning:roles
-justinr1234:lib@0.0.8
+justinr1234:lib
 justinr1234:example
 mdg:validated-method

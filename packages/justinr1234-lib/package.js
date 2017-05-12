@@ -1,7 +1,7 @@
 /* globals Package, Npm */
 Package.describe({
   name: 'justinr1234:lib',
-  version: '0.0.8',
+  version: '0.0.1',
   summary: 'justinr1234 Lib',
   documentation: 'README.md',
   git: 'https://github.com/justinr1234/opinionated-meteor-application-template/tree/master/packages/justinr1234-lib',
@@ -21,15 +21,13 @@ Package.onUse(api => {
   api.use('ecmascript');
   api.use('random');
   api.use('underscore');
-  api.use('localstorage');
 
   // CLIENT LIB
-  api.use('templating@1.3.2', 'client');
-  api.use('kadira:flow-router@2.12.1');
+  api.use('templating', 'client');
+  api.use('kadira:flow-router');
 
   // COMMON LIB
-  api.use('aldeed:simple-schema@1.5.3');
-  api.use('ongoworks:security@2.1.0');
+  api.use('ongoworks:security');
 
   // MAIN MODULES
   api.mainModule('client/main.js', 'client');

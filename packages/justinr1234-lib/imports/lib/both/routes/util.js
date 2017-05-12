@@ -4,7 +4,7 @@ import { Random } from 'meteor/random';
 import { _ } from 'meteor/underscore';
 import { pkgJson, logFactory } from 'meteor/justinr1234:lib';
 
-export const warn = logFactory(pkgJson.name, __filename, '@warn-');
+export const warn = logFactory(pkgJson, __filename, '@warn-');
 
 // TODO: Move config into global file
 // BEGIN: Config

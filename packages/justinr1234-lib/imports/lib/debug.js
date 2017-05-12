@@ -1,8 +1,8 @@
 import { default as debugLibraryLogFactory } from 'debug';
 
 export const logFactory = (
-  name = '',
+  pkgJson = '',
   filename = '',
   prefix = '@',
   postfix = ''
-) => debugLibraryLogFactory(`${prefix}${name}${filename}${postfix}`);
+) => debugLibraryLogFactory(`${prefix}${pkgJson.name}${filename}${postfix}`);

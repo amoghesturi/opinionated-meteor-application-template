@@ -1,8 +1,9 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { pkgJson, Router, logFactory, DEBUG_ENABLED } from 'meteor/justinr1234:lib';
+import { pkgJson, Router } from 'meteor/justinr1234:lib';
+import { default as logFactory } from 'debug';
 
-const debug = logFactory(pkgJson.name, __filename);
+const debug = logFactory(`@${pkgJson.name}${__filename}`);
 
 function getFormattedRoutes(routes) {
   return routes.map(({ name, path }) => ({
@@ -22,7 +23,6 @@ const onRendered = function onRendered() {
 
 const helpers = {
   routes: () => getFormattedRoutes(Template.instance().data.routes || Router.routes || []),
-  debugEnabled: () => DEBUG_ENABLED.get(),
 };
 
 Template.DEBUG_ROUTE_MENU.onRendered(onRendered);
